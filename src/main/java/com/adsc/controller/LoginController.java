@@ -2,7 +2,7 @@ package com.adsc.controller;
 
 import com.adsc.domain.ResponseResult;
 import com.adsc.domain.User;
-import com.adsc.service.LoginServcie;
+import com.adsc.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    private LoginServcie loginServcie;
+    private LoginService loginService;
 
     @PostMapping("/user/login")
     public ResponseResult login(@RequestBody User user){
-        return loginServcie.login(user);
+        return loginService.login(user);
     }
 
     @RequestMapping("/user/logout")
     public ResponseResult logout() {
-        return loginServcie.logout();
+        return loginService.logout();
     }
 }
 

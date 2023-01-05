@@ -22,6 +22,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public SecurityConfig(AuthenticationEntryPoint authenticationEntryPoint, AccessDeniedHandler accessDeniedHandler) {
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.accessDeniedHandler = accessDeniedHandler;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -29,10 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 注入上边我们放入容器中的JwtAuthenticationTokenFilter，在下面代码中添加到过滤器链中
     @Autowired
     JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
     @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
+
     @Autowired
     private AccessDeniedHandler accessDeniedHandler;
+
 
     /**
      * 配置过滤规则

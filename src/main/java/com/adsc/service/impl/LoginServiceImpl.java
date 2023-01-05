@@ -3,7 +3,7 @@ package com.adsc.service.impl;
 import com.adsc.domain.LoginUser;
 import com.adsc.domain.ResponseResult;
 import com.adsc.domain.User;
-import com.adsc.service.LoginServcie;
+import com.adsc.service.LoginService;
 import com.adsc.utils.JwtUtil;
 import com.adsc.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 @Service
-public class LoginServiceImpl implements LoginServcie {
+public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private AuthenticationManager authenticationManager; // 此对象是前面
